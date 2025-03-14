@@ -61,7 +61,8 @@ def display_cosine():
         phrases.append(Phrase(entry.get('1.0', 'end-1c')))
     for i in range(8):
         for j in range(8):
-            heatmap_labels[i][j].config(bg = get_color(phrases[i].cosine_similarity(phrases[j])))
+            similarity = phrases[i].cosine_similarity(phrases[j])
+            heatmap_labels[i][j].config(bg = get_color(similarity), text=f"{similarity:.2f}")
 
 #Add buttons
 tk.Button(button_frame, text="Submit", command=display_cosine).pack()
